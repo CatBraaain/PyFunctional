@@ -755,9 +755,9 @@ class Sequence(Generic[_T_co]):
         """
         return self.filter(lambda x: x is not None)  # type: ignore
 
-    @overload
-    def filter(self, func: Callable[[_T_co], TypeGuard[_T]]) -> Sequence[_T]:
-        ...
+    # @overload
+    # def filter(self, func: Callable[[_T_co], TypeGuard[_T]]) -> Sequence[_T]:
+    #     ...
 
     @overload
     def filter(self, func: Callable[[_T_co], Any]) -> Sequence[_T_co]:
@@ -1074,7 +1074,7 @@ class Sequence(Generic[_T_co]):
 
     def group_by(
         self, func: Callable[[_T_co], _T]
-    ) -> Sequence[tuple[_T, Sequence[_T_co]]]:
+    ) -> Sequence[tuple[_T, list[_T_co]]]:
         """
         Group elements into a list of (Key, Value) tuples where func creates the key and maps
         to values matching that key.
